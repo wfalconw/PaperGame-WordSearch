@@ -53,12 +53,19 @@ global.lvl=1;
           <argument>
             <kind>1</kind>
             <string>///Draw text
+
+
+
+draw_set_colour(global.c_title);
+
+draw_set_valign(fa_middle);
+draw_set_halign(fa_center);
+
 draw_set_font(fnt_subtitle);
-draw_set_colour(global.c_title);
-draw_text_center(640,560,text_title);
+draw_text_ext_transformed(240,360,text_title,48,720,1,1,90);
+
 draw_set_font(fnt_title);
-draw_set_colour(global.c_title);
-draw_text_center(640,716,text_game);
+draw_text_ext_transformed(420,360,text_game,48,720,1,1,90);
 </string>
           </argument>
         </arguments>

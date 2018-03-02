@@ -29,18 +29,24 @@
     </scripts>
     <script>scripts\draw_text_center.gml</script>
     <script>scripts\scr_createLine.gml</script>
-    <script>scripts\add_words_easy.gml</script>
-    <script>scripts\add_words_medium.gml</script>
-    <script>scripts\add_words_hard.gml</script>
+    <scripts name="Word Init">
+      <script>scripts\add_words_easy.gml</script>
+      <script>scripts\add_words_medium.gml</script>
+      <script>scripts\add_words_hard.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
+    <fonts name="Menu">
+      <font>fonts\fnt_title</font>
+      <font>fonts\fnt_subtitle</font>
+    </fonts>
     <font>fonts\fnt_base</font>
     <font>fonts\fnt_alternative</font>
-    <font>fonts\fnt_title</font>
     <font>fonts\fnt_timer</font>
-    <font>fonts\fnt_subtitle</font>
     <font>fonts\fnt_game</font>
-    <font>fonts\fnt_timerNew</font>
+    <fonts name="Timer">
+      <font>fonts\fnt_timerNew</font>
+    </fonts>
   </fonts>
   <objects name="objects">
     <objects name="[BACKUP]">
