@@ -4,22 +4,17 @@
     <Config>Configs\Default</Config>
   </Configs>
   <datafiles number="4" name="datafiles"/>
-  <NewExtensions>
-    <extension index="0">extensions\WordSearch Engine Portuguese</extension>
-  </NewExtensions>
+  <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sprite0</sprite>
-    <sprite>sprites\sprite1</sprite>
-    <sprite>sprites\sprite2</sprite>
-    <sprite>sprites\sprite3</sprite>
-    <sprite>sprites\sprite4</sprite>
+    <sprite>sprites\spr_menu_button</sprite>
+    <sprite>sprites\spr_game_button_music</sprite>
+    <sprite>sprites\spr_game_button_restart</sprite>
+    <sprite>sprites\spr_game_button_find</sprite>
+    <sprite>sprites\spr_blackblock</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\bkg_paper2</background>
-    <background>background\bkg_paper</background>
     <background>background\bkg_title</background>
-    <background>background\background2</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -34,6 +29,9 @@
     </scripts>
     <script>scripts\draw_text_center.gml</script>
     <script>scripts\scr_createLine.gml</script>
+    <script>scripts\add_words_easy.gml</script>
+    <script>scripts\add_words_medium.gml</script>
+    <script>scripts\add_words_hard.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_base</font>
@@ -45,26 +43,28 @@
     <font>fonts\fnt_timerNew</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_case</object>
+    <objects name="[BACKUP]">
+      <object>objects\obj_controller_backup</object>
+    </objects>
     <objects name="Menu">
+      <object>objects\obj_case</object>
       <object>objects\obj_title_setting</object>
       <object>objects\obj_button_easy</object>
+      <object>objects\obj_button_medium</object>
+      <object>objects\obj_button_hard</object>
     </objects>
-    <object>objects\obj_game</object>
-    <object>objects\control_backup</object>
-    <object>objects\obj_controller</object>
     <objects name="Buttons">
       <object>objects\obj_button_help</object>
       <object>objects\obj_button_reload</object>
       <object>objects\obj_button_music</object>
     </objects>
-    <object>objects\obj_timer</object>
+    <object>objects\obj_game</object>
     <object>objects\obj_line</object>
+    <object>objects\obj_timer</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room_game_easy</room>
     <room>rooms\room_menu</room>
-    <room>rooms\room1</room>
+    <room>rooms\room_game_easy</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

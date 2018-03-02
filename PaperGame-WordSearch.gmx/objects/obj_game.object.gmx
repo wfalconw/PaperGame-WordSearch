@@ -38,11 +38,7 @@ time_to_create=0;
 board_font = fnt_base;
 
 //Number of attempts to add the word in the frame
-tentativa = 1000;
-
-_file = file_text_open_read("game_easy.txt");
-
-
+tentativa = 64;
 
 //What are the organizational options
 opcoes = "";
@@ -62,31 +58,25 @@ mouse_xstart = mouse_x;
 //Stores the y value of the mouse
 mouse_ystart = mouse_y;
 
-
 //Colour settings
-line_color = c_green;
-
-board_colorA = c_black;
-board_colorB = c_dkgray;
-board_alpha = 0.8;
-
-board_font_color = make_colour_rgb(0,74,127);
-board_font_revela_color = make_colour_rgb(0,48,83);
+line_color = 0;
+board_font_color = global.c_ink;
+board_font_revela_color = global.c_ink;
 list_font = fnt_base;
-list_font_color = make_colour_rgb(24, 66, 95);
-list_font_revela_color = make_colour_rgb(0,48,83);
+list_font_color = global.c_ink;
+list_font_revela_color = global.c_ink;
 
-//Word Searshing Engine Start
+//Word Searching Engine Start
 word_find = "";
 reversed = 0;
 reversed_find = 0;
 amount_words_find = 0;
 position = "";
-words = ds_list_create();
-word_list_pressed = ds_list_create();
-word_list_release = ds_list_create();
-words_to_find = ds_list_create();
-map_lista = ds_map_create();
+    words = ds_list_create();
+    word_list_pressed = ds_list_create();
+    word_list_release = ds_list_create();
+    words_to_find = ds_list_create();
+    map_lista = ds_map_create();
 map_cell[0, 0] = "";
 cell_pressed = -1;
 cell_release = -1;
@@ -95,33 +85,8 @@ fcx = -1;
 fcy = -1;
 num = 0;
 
-//Try to read file
-/* while(!file_text_eof(_file))
-{
-    str[num] = file_text_read_string(_file);
-    ds_list_add(words, string(str[num]));
-    
-    //check for line skipping
-    if(os_type == os_windows &amp;&amp; os_browser == -1)
-    {
-        file_text_readln(_file);
-    }
-    num += 1;
-}
-file_text_close(_file);
-*/
-
-ds_list_add(words, 'Код');
-ds_list_add(words, 'Кодить');
-ds_list_add(words, 'Деньги');
-ds_list_add(words, 'Вата');
-ds_list_add(words, 'Лава');
-ds_list_add(words, 'Ход');
-ds_list_add(words, 'Мед');
-ds_list_add(words, 'Обед');
-ds_list_add(words, 'Гном');
-ds_list_add(words, 'Образ');
-ds_list_add(words, 'Страна');
+/*******ADDING WORDS IN GAME*********/
+add_words_easy();
 
 word = "";
 word_length = 0;
@@ -145,6 +110,8 @@ for(i = 0; i &lt; ds_list_size(words); i++)
     word_tentativa[i, 0] = words[|i];
     word_tentativa[i, 1] = tentativa;
 }
+
+//дальше идет уличная магия
 
 //Faça
 do
@@ -201,6 +168,8 @@ do
     //Pega o tamanho em letras da palavra selecionada
     word_length = string_length(word);
     
+    //тут выбирается направление и поворотность слова
+    
     if(word_length &gt; 0)
     {    
         //Escolhe uma opção de organização
@@ -245,7 +214,7 @@ do
                 {
                     ds_map_replace(map_cell[_xp, _yp], "cor", board_font_color);
                     
-                    //Seleciona uma letra aleatória do alfabeto
+                    //Список допустимого размера символов в доске, которая заполняется9не влияет на слова из скрипта)
                     letter = irandom_range(1040, 1071);
                     
                     //Seta o valor do quadro para a letra selecionada acima
@@ -276,34 +245,8 @@ until ds_list_size(words) == 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///init timer
-
-seconds=0;
-minutes=0;
-time=0;
-
-alarm[0]=1*room_speed;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Init background vars
+
 //Переменные для рисования фона и игровых объектов.
 
 backRedLinePoint = round(room_width*0.4); //Ставим линию на 40% ширины экрана
@@ -336,40 +279,9 @@ backWordsToFindPointY = 210;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_grid_destroy(board);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Time Travel
+            <string>///Memory free on deleting 
 
-alarm[0]=1*room_speed;
-seconds++;
-
-if seconds&gt;59
-{
-    seconds=0;
-    minutes++;
-}
-
+ds_grid_destroy(board);
 </string>
           </argument>
         </arguments>

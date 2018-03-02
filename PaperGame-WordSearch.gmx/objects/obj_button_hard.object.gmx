@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>///Stores variables
 
-text_button="Легкая игра";
-square=point_in_rectangle(mouse_x,mouse_y,x-360,y+48,x+400,y-48);
+text_button="Сложная игра";
+square=point_in_rectangle(mouse_x,mouse_y,x-360,y+30,x+400,y-30);
 </string>
           </argument>
         </arguments>

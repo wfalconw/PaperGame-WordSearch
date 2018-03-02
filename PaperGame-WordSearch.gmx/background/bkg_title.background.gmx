@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>1024</width>
-  <height>1265</height>
+  <width>1265</width>
+  <height>1024</height>
   <data>images\bkg_title.png</data>
 </background>
