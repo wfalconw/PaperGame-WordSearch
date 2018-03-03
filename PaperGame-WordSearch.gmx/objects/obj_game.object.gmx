@@ -257,6 +257,36 @@ backTimerPointX = backRedLinePoint/2-12;
 backTimerPointY = 90;
 backWordsToFindPointX = backRedLinePoint/2;
 backWordsToFindPointY = 210;
+
+//Применяется для определения строчки найденного слова
+tempFoundWordIndex = 0; 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///init timer
+
+seconds=0;
+minutes=0;
+time=0;
+
+alarm[0]=1*room_speed;
 </string>
           </argument>
         </arguments>
@@ -282,6 +312,39 @@ backWordsToFindPointY = 210;
             <string>///Memory free on deleting 
 
 ds_grid_destroy(board);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Time Travel
+
+alarm[0]=1*room_speed;
+seconds++;
+
+if seconds&gt;59
+{
+    seconds=0;
+    minutes++;
+}
+
 </string>
           </argument>
         </arguments>
@@ -412,7 +475,7 @@ if((gx &lt; board_w &amp;&amp; gy &lt; board_h) &amp;&amp; (gx &gt;= 0 &amp;&amp
                         if(word_list_pressed[|i] == word_list_release[|j])
                         {
                             word_find = word_list_pressed[|i];
-                            //show_debug_message(string(word_tentativa[0, i]) + ' ' + string(word_find) + ' ' + string('..'));
+                            show_debug_message(string(words_to_find[|i]) + ' ' + string(word_find));
                             word_find_length = string_length(word_find);
                             if(position == "horizontal")
                             {                            
@@ -627,6 +690,25 @@ if((gx &lt; board_w &amp;&amp; gy &lt; board_h) &amp;&amp; (gx &gt;= 0 &amp;&amp
                                 }
                             }
                             amount_words_find += 1;
+                            for(i = 0; i &lt; ds_list_size(words_to_find); i++){                                   
+                                    w = words_to_find[|i];
+                                    if ds_map_find_value(map_lista, "palavra_" + string(w)) = word_find then tempFoundWordIndex = i;
+                                    //draw_text(backWordsToFindPointX, backWordsToFindPointY + (60 * i), ds_map_find_value(map_lista, "palavra_" + string(w)));
+                                    //draw_line_width(mouse_xstart, mouse_ystart, mouse_x, mouse_y, 60);
+                                }
+                            
+                            
+                            
+                            
+                            
+    
+                            //if word_find = ds_map_find_value(words_to_find,word_find) then show_debug_message('YES');
+                            //show_debug_message(ds_map_find_value(words_to_find,word_find) + ' ' + string(word_find));
+                            
+                            //word_find
+                            //tempFoundWordIndex
+                            
+                            
                             scr_createLine();
                             if(amount_words_find == ds_list_size(words_to_find))
                             {

@@ -15,6 +15,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bkg_title</background>
+    <background>background\bkg_paper</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -66,7 +67,6 @@
     </objects>
     <object>objects\obj_game</object>
     <object>objects\obj_line</object>
-    <object>objects\obj_timer</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_menu</room>

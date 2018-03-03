@@ -5,4 +5,5 @@ a.Ay = mouse_ystart;
 a.Bx = mouse_x;
 a.By = mouse_y;
 a.clr = line_color;
-show_debug_message('create ' + string(a.Ax));
+a.width = string_length(word_find);
+if tempFoundWordIndex > 0 then a.wordIndex = tempFoundWordIndex;

@@ -29,10 +29,11 @@
 Ay = 0;
 Bx = 0;
 By = 0;
-wordIndex = 1;
+wordIndex = 0;
 clr = c_red;
 alpha = 0.3;
 thick = 40;
+width = 1;
 </string>
           </argument>
         </arguments>
@@ -60,8 +61,10 @@ thick = 40;
 draw_set_colour(clr);
 draw_set_alpha(0.4);
 draw_line_width(Ax, Ay, Bx, By, thick);
+draw_line_width(obj_game.backWordsToFindPointX-(80*(width/4)),obj_game.backWordsToFindPointY+(60*wordIndex),obj_game.backWordsToFindPointX+(80*(width/4)),obj_game.backWordsToFindPointY+(60*wordIndex), thick);
 draw_set_color($FFFFFF);
 draw_set_alpha(1);
+
 </string>
           </argument>
         </arguments>
